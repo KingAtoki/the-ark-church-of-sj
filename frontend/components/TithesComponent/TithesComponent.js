@@ -287,6 +287,7 @@ export default class TithesComponent extends Component {
   }
 
   async removeCustID() {
+    //Only using this for testing
     try {
       await AsyncStorage.removeItem('customerID');
       this.setState({
@@ -336,6 +337,7 @@ export default class TithesComponent extends Component {
   }
 
   async componentDidMount() {
+    // This loads the 'scripture' that will be displayed
     message = tithesMessages[Math.floor(Math.random() * 15)];
     try {
       const token = await AsyncStorage.getItem('token');
