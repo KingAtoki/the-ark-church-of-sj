@@ -1,0 +1,24 @@
+{
+  "expo": {
+    "name": "the-ark-church-of-sj",
+    "description": "An empty new project",
+    "slug": "the-ark-church-of-sj",
+    "privacy": "public",
+    "sdkVersion": "23.0.0",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "primaryColor": "#cccccc",
+    "icon":
+      "/Users/kingatoki/Desktop/the-ark-church-of-sj/assets/TheArkChurch1024x1024.png",
+    "facebookScheme": "fb2040679689509254",
+    "splash": {
+      "image":
+        "/Users/kingatoki/Desktop/the-ark-church-of-sj/assets/TheArkChurch.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "ios": {
+      "supportsTablet": true
+    }
+  }
+}
