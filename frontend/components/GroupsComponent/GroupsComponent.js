@@ -189,6 +189,7 @@ export default class GroupsComponent extends Component {
             >
               <View
                 style={{
+                  marginTop: 22,
                   shadowColor: '#000',
                   shadowOffset: { width: 0, height: 2 },
                   shadowOpacity: 0.8,
@@ -235,6 +236,7 @@ export default class GroupsComponent extends Component {
             >
               <View
                 style={{
+                  marginTop: 22,
                   shadowColor: '#000',
                   shadowOffset: { width: 0, height: 2 },
                   shadowOpacity: 0.8,
@@ -282,6 +284,7 @@ export default class GroupsComponent extends Component {
             >
               <View
                 style={{
+                  marginTop: 22,
                   shadowColor: '#000',
                   shadowOffset: { width: 0, height: 2 },
                   shadowOpacity: 0.8,
@@ -325,6 +328,7 @@ export default class GroupsComponent extends Component {
             >
               <View
                 style={{
+                  marginTop: 22,
                   shadowColor: '#000',
                   shadowOffset: { width: 0, height: 2 },
                   shadowOpacity: 0.8,
@@ -380,25 +384,25 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginHorizontal: '2%',
-    marginVertical: '5%'
+    marginVertical: 22
   },
   kingdomKids: {
     justifyContent: 'center',
     alignItems: 'center',
     marginHorizontal: '2%',
-    marginVertical: '5%'
+    marginVertical: 22
   },
   gpg: {
     justifyContent: 'center',
     alignItems: 'center',
     marginHorizontal: '2%',
-    marginVertical: '5%'
+    marginVertical: 22
   },
   kingdomCloset: {
     justifyContent: 'center',
     alignItems: 'center',
     marginHorizontal: '2%',
-    marginVertical: '5%'
+    marginVertical: 22
   },
   arkAngelsImage: {
     width: width * 0.8,
