@@ -180,6 +180,7 @@ export default class GroupsComponent extends Component {
               alert('Modal has been closed.');
             }}
           >
+          <ScrollView>
             <View
               style={{
                 marginTop: 22,
@@ -218,6 +219,7 @@ export default class GroupsComponent extends Component {
                 />
               </View>
             </View>
+            </ScrollView>
           </Modal>
           <Modal
             animationType="slide"
@@ -227,6 +229,7 @@ export default class GroupsComponent extends Component {
               alert('Modal has been closed.');
             }}
           >
+          <ScrollView>
             <View
               style={{
                 marginTop: 22,
@@ -266,6 +269,7 @@ export default class GroupsComponent extends Component {
                 />
               </View>
             </View>
+            </ScrollView>
           </Modal>
           <Modal
             animationType="slide"
@@ -275,6 +279,7 @@ export default class GroupsComponent extends Component {
               alert('Modal has been closed.');
             }}
           >
+          <ScrollView>
             <View
               style={{
                 marginTop: 22,
@@ -310,6 +315,7 @@ export default class GroupsComponent extends Component {
                 />
               </View>
             </View>
+            </ScrollView>
           </Modal>
           <Modal
             animationType="slide"
@@ -319,6 +325,7 @@ export default class GroupsComponent extends Component {
               alert('Modal has been closed.');
             }}
           >
+          <ScrollView>
             <View
               style={{
                 marginTop: 22,
@@ -357,6 +364,7 @@ export default class GroupsComponent extends Component {
                 />
               </View>
             </View>
+            </ScrollView>
           </Modal>
         </ScrollView>
       </View>
