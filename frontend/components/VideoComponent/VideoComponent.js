@@ -96,7 +96,7 @@ export default class VideoComponent extends React.PureComponent {
         </Text>
 
         <FlatList
-          style={{ marginBottom: height * 0.1 }}
+          style={{ marginBottom: height * 0.15 }}
           showsVerticalScrollIndicator={false}
           data={this.state.videos}
           extraData={this.state}
