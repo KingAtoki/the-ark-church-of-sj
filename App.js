@@ -14,6 +14,7 @@ import TithesComponent from './frontend/components/TithesComponent/TithesCompone
 import MenuComponent from './frontend/components/MenuComponent/MenuComponent';
 import MeetThePastorsComponent from './frontend/components/MeetThePastorsComponent/MeetThePastorComponent';
 import EventsComponent from './frontend/components/EventsComponent/EventsComponent';
+import ReviewsComponent from './frontend/components/ReviewsComponent/ReviewsComponent';
 
 const Menu = StackNavigator({
   Menu: {
@@ -32,6 +33,12 @@ const Menu = StackNavigator({
     screen: EventsComponent,
     navigationOptions: {
       title: 'Events'
+    }
+  },
+  Reviews: {
+    screen: ReviewsComponent,
+    navigationOptions: {
+      title: 'Reviews'
     }
   }
 });

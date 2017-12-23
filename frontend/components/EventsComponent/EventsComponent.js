@@ -20,6 +20,19 @@ const base = new Airtable({ apiKey: 'keyEvd4PvQslvlmrU' }).base(
 );
 
 export default class EventsComponent extends React.PureComponent {
+  static navigationOptions = ({ navigation }) => {
+    const { params = {} } = navigation.state;
+    return {
+      headerBackTitle: null,
+      tabBarLabel: ' ',
+      tabBarIcon: ({ tintColor }) => (
+        <Image
+          source={require('/Users/kingatoki/Desktop/the-ark-church-of-sj/assets/icons8-menu-50.png')}
+          style={[styles.icon, { tintColor: tintColor }]}
+        />
+      )
+    };
+  };
   constructor() {
     super();
     this.state = {
@@ -89,7 +102,7 @@ export default class EventsComponent extends React.PureComponent {
   render() {
     if (!this.state.isReady) {
       return (
-        <View>
+        <View style={{ marginTop: '10%' }}>
           <ActivityIndicator size="small" color="grey" />
         </View>
       );

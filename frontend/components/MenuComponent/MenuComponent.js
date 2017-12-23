@@ -41,6 +41,9 @@ export default class MenuComponent extends Component {
   events() {
     this.props.navigation.navigate('Events');
   }
+  reviews() {
+    this.props.navigation.navigate('Reviews');
+  }
 
   render() {
     return (
@@ -56,6 +59,12 @@ export default class MenuComponent extends Component {
           onPress={() => this.events()}
         >
           <Text style={{ fontSize: 20 }}>Church Events</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.defaultButton}
+          onPress={() => this.reviews()}
+        >
+          <Text style={{ fontSize: 20 }}>Reviews</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.logoutButton}

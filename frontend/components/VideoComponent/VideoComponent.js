@@ -84,7 +84,7 @@ export default class VideoComponent extends React.PureComponent {
   render() {
     if (!this.state.isReady) {
       return (
-        <View>
+        <View style={{ marginTop: '10%' }}>
           <ActivityIndicator size="small" color="grey" />
         </View>
       );

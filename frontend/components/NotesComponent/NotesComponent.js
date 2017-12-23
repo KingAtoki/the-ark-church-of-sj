@@ -58,7 +58,6 @@ export default class NotesComponent extends Component {
     this.state.noteToBeAdded.content = this.state.newNoteContent;
     const notes = this.state.notes;
     notes.push(this.state.noteToBeAdded);
-    console.log(notes);
     this.setState({
       noteToBeAdded: { title: '', content: '' },
       newNoteTitle: '',
