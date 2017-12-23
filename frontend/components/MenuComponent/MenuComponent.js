@@ -9,6 +9,7 @@ import {
   TouchableOpacity,
   ScrollView
 } from 'react-native';
+import EventsComponent from '../EventsComponent/EventsComponent';
 
 export default class MenuComponent extends Component {
   static navigationOptions = ({ navigation }) => {
@@ -37,6 +38,9 @@ export default class MenuComponent extends Component {
   meetThePastors() {
     this.props.navigation.navigate('MeetThePastors');
   }
+  events() {
+    this.props.navigation.navigate('Events');
+  }
 
   render() {
     return (
@@ -46,6 +50,12 @@ export default class MenuComponent extends Component {
           onPress={() => this.meetThePastors()}
         >
           <Text style={{ fontSize: 20 }}>Meet the Pastors</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.defaultButton}
+          onPress={() => this.events()}
+        >
+          <Text style={{ fontSize: 20 }}>Church Events</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.logoutButton}
@@ -72,8 +82,9 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   defaultButton: {
+    marginVertical: '2%',
     width: '100%',
-    height: 50,
+    height: 45,
     padding: 10,
     backgroundColor: 'white',
     alignItems: 'center'

@@ -13,6 +13,7 @@ import NotesComponent from './frontend/components/NotesComponent/NotesComponent'
 import TithesComponent from './frontend/components/TithesComponent/TithesComponent';
 import MenuComponent from './frontend/components/MenuComponent/MenuComponent';
 import MeetThePastorsComponent from './frontend/components/MeetThePastorsComponent/MeetThePastorComponent';
+import EventsComponent from './frontend/components/EventsComponent/EventsComponent';
 
 const Menu = StackNavigator({
   Menu: {
@@ -25,6 +26,12 @@ const Menu = StackNavigator({
     screen: MeetThePastorsComponent,
     navigationOptions: {
       title: 'Meet The Pastors'
+    }
+  },
+  Events: {
+    screen: EventsComponent,
+    navigationOptions: {
+      title: 'Events'
     }
   }
 });
