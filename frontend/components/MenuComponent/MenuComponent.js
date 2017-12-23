@@ -15,6 +15,7 @@ export default class MenuComponent extends Component {
     const { params = {} } = navigation.state;
     return {
       gesturesEnabled: false,
+      headerBackTitle: null,
       tabBarLabel: ' ',
       tabBarIcon: ({ tintColor }) => (
         <Image
@@ -33,18 +34,21 @@ export default class MenuComponent extends Component {
     this.props.navigation.navigate('Home');
   }
 
+  meetThePastors() {
+    this.props.navigation.navigate('MeetThePastors');
+  }
+
   render() {
     return (
       <ScrollView style={{ marginTop: 22 }}>
         <TouchableOpacity
-          style={{
-            width: '100%',
-            height: 50,
-            padding: 10,
-            marginVertical: '5%',
-            backgroundColor: 'white',
-            alignItems: 'center'
-          }}
+          style={styles.defaultButton}
+          onPress={() => this.meetThePastors()}
+        >
+          <Text style={{ fontSize: 20 }}>Meet the Pastors</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.logoutButton}
           onPress={() => this.logout()}
         >
           <Text style={{ fontSize: 20, color: 'red' }}>Logout</Text>
@@ -58,5 +62,20 @@ const styles = StyleSheet.create({
   icon: {
     width: 30,
     height: 30
+  },
+  logoutButton: {
+    width: '100%',
+    height: 50,
+    padding: 10,
+    marginVertical: '5%',
+    backgroundColor: 'white',
+    alignItems: 'center'
+  },
+  defaultButton: {
+    width: '100%',
+    height: 50,
+    padding: 10,
+    backgroundColor: 'white',
+    alignItems: 'center'
   }
 });

@@ -12,6 +12,22 @@ import GroupsComponent from './frontend/components/GroupsComponent/GroupsCompone
 import NotesComponent from './frontend/components/NotesComponent/NotesComponent';
 import TithesComponent from './frontend/components/TithesComponent/TithesComponent';
 import MenuComponent from './frontend/components/MenuComponent/MenuComponent';
+import MeetThePastorsComponent from './frontend/components/MeetThePastorsComponent/MeetThePastorComponent';
+
+const Menu = StackNavigator({
+  Menu: {
+    screen: MenuComponent,
+    navigationOptions: {
+      title: 'Menu'
+    }
+  },
+  MeetThePastors: {
+    screen: MeetThePastorsComponent,
+    navigationOptions: {
+      title: 'Meet The Pastors'
+    }
+  }
+});
 
 const Bible = StackNavigator({
   Books: {
@@ -55,7 +71,7 @@ const Tabs = TabNavigator({
     screen: GroupsComponent
   },
   MenuComponent: {
-    screen: MenuComponent
+    screen: Menu
   }
 });
 
