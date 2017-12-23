@@ -50,21 +50,33 @@ export default class MenuComponent extends Component {
       <ScrollView style={{ marginTop: 22 }}>
         <TouchableOpacity
           style={styles.defaultButton}
-          onPress={() => this.meetThePastors()}
-        >
-          <Text style={{ fontSize: 20 }}>Meet the Pastors</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.defaultButton}
           onPress={() => this.events()}
         >
           <Text style={{ fontSize: 20 }}>Church Events</Text>
+          <Image
+            source={require('/Users/kingatoki/Desktop/the-ark-church-of-sj/assets/icons8-more-than-50.png')}
+            style={styles.icon}
+          />
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.defaultButton}
           onPress={() => this.reviews()}
         >
           <Text style={{ fontSize: 20 }}>Reviews</Text>
+          <Image
+            source={require('/Users/kingatoki/Desktop/the-ark-church-of-sj/assets/icons8-more-than-50.png')}
+            style={styles.icon}
+          />
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.defaultButton}
+          onPress={() => this.meetThePastors()}
+        >
+          <Text style={{ fontSize: 20 }}>Meet the Pastors</Text>
+          <Image
+            source={require('/Users/kingatoki/Desktop/the-ark-church-of-sj/assets/icons8-more-than-50.png')}
+            style={styles.icon}
+          />
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.logoutButton}
@@ -86,7 +98,7 @@ const styles = StyleSheet.create({
     width: '100%',
     height: 50,
     padding: 10,
-    marginVertical: '5%',
+    marginVertical: '10%',
     backgroundColor: 'white',
     alignItems: 'center'
   },
@@ -96,6 +108,8 @@ const styles = StyleSheet.create({
     height: 45,
     padding: 10,
     backgroundColor: 'white',
-    alignItems: 'center'
+    alignItems: 'center',
+    flexDirection: 'row',
+    justifyContent: 'space-between'
   }
 });
