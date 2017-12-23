@@ -88,7 +88,6 @@ const styles = StyleSheet.create({
     marginTop: '15%'
   },
   welcomeText: {
-    fontSize: 20,
-    marginTop: '5%'
+    fontSize: 20
   }
 });
