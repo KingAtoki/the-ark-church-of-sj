@@ -44,10 +44,23 @@ export default class MenuComponent extends Component {
   reviews() {
     this.props.navigation.navigate('Reviews');
   }
+  kingdomCloset() {
+    this.props.navigation.navigate('KingdomCloset');
+  }
 
   render() {
     return (
       <ScrollView style={{ marginTop: 22 }}>
+        <TouchableOpacity
+          style={styles.defaultButton}
+          onPress={() => this.kingdomCloset()}
+        >
+          <Text style={{ fontSize: 20 }}>Kingdom Closet</Text>
+          <Image
+            source={require('/Users/kingatoki/Desktop/the-ark-church-of-sj/assets/icons8-more-than-50.png')}
+            style={styles.icon}
+          />
+        </TouchableOpacity>
         <TouchableOpacity
           style={styles.defaultButton}
           onPress={() => this.events()}

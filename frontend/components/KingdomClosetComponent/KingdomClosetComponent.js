@@ -15,7 +15,7 @@ import { StackNavigator } from 'react-navigation';
 
 let { height, width } = Dimensions.get('window');
 
-export default class GroupsComponent extends Component {
+export default class KingdomClosetComponent extends Component {
   static navigationOptions = {
     gesturesEnabled: false,
     header: null,
@@ -28,23 +28,27 @@ export default class GroupsComponent extends Component {
     )
   };
   state = {
-    arkAngelsModalVisible: false,
-    kingdomKidsModalVisible: false,
-    gpgModalVisible: false,
-    kingdomClosetModalVisible: false
+    shirtModalVisible: false,
+    pantsModalVisible: false,
+    shoesModalVisible: false,
+    accessoriesModalVisible: false,
+    foodModalVisible: false
   };
 
-  setArkAngelsModalVisible = visible => {
-    this.setState({ arkAngelsModalVisible: visible });
+  setShirtModalVisible = visible => {
+    this.setState({ shirtModalVisible: visible });
   };
-  setKingdomKidsModalVisible = visible => {
-    this.setState({ kingdomKidsModalVisible: visible });
+  setPantsModalVisible = visible => {
+    this.setState({ pantsModalVisible: visible });
   };
-  setGpgModalVisible = visible => {
-    this.setState({ gpgModalVisible: visible });
+  setShoesModalVisible = visible => {
+    this.setState({ shoesModalVisible: visible });
   };
-  setKingdomClosetModalVisible = visible => {
-    this.setState({ kingdomClosetModalVisible: visible });
+  setAccessoriesModalVisible = visible => {
+    this.setState({ accessoriesModalVisible: visible });
+  };
+  setFoodModalVisible = visible => {
+    this.setState({ foodModalVisible: visible });
   };
   render() {
     return (
@@ -55,10 +59,10 @@ export default class GroupsComponent extends Component {
           justifyContent: 'center'
         }}
       >
-        <Text style={{ fontSize: 40, marginTop: '5%' }}>Groups</Text>
+        <Text style={{ fontSize: 40, marginTop: '5%' }}>Kingdom Closet</Text>
         <ScrollView showsVerticalScrollIndicator={false}>
           <View>
-            <View style={styles.arkAngels}>
+            <View style={styles.shirt}>
               <View
                 style={{
                   shadowColor: '#000',
@@ -69,23 +73,23 @@ export default class GroupsComponent extends Component {
                 }}
               >
                 <Image
-                  source={require('/Users/kingatoki/Desktop/the-ark-church-of-sj/assets/ArkAngels.png')}
-                  style={styles.arkAngelsImage}
+                  source={require('/Users/kingatoki/Desktop/the-ark-church-of-sj/assets/shirt.png')}
+                  style={styles.shirtImage}
                 />
               </View>
               <Text style={{ marginVertical: '5%', fontStyle: 'italic' }}>
-                Ministry for Ages 3-8
+                Shirts
               </Text>
               <TouchableOpacity
                 style={styles.learnMoreButton}
                 onPress={() => {
-                  this.setArkAngelsModalVisible(true);
+                  this.setShirtModalVisible(true);
                 }}
               >
-                <Text>Learn more...</Text>
+                <Text>See What's Available</Text>
               </TouchableOpacity>
             </View>
-            <View style={styles.kingdomKids}>
+            <View style={styles.pants}>
               <View
                 style={{
                   shadowColor: '#000',
@@ -96,25 +100,25 @@ export default class GroupsComponent extends Component {
                 }}
               >
                 <Image
-                  source={require('/Users/kingatoki/Desktop/the-ark-church-of-sj/assets/KingdomKids.png')}
-                  style={styles.kingdomKidsImage}
+                  source={require('/Users/kingatoki/Desktop/the-ark-church-of-sj/assets/pants.png')}
+                  style={styles.pantsImage}
                 />
               </View>
               <Text style={{ marginVertical: '5%', fontStyle: 'italic' }}>
-                Ministry for Ages 9-12
+                Pants
               </Text>
               <TouchableOpacity
                 style={styles.learnMoreButton}
                 onPress={() => {
-                  this.setKingdomKidsModalVisible(true);
+                  this.setPantsModalVisible(true);
                 }}
               >
-                <Text>Learn more...</Text>
+                <Text>See What's Available</Text>
               </TouchableOpacity>
             </View>
           </View>
           <View>
-            <View style={styles.gpg}>
+            <View style={styles.shoes}>
               <View
                 style={{
                   shadowColor: '#000',
@@ -125,23 +129,23 @@ export default class GroupsComponent extends Component {
                 }}
               >
                 <Image
-                  source={require('/Users/kingatoki/Desktop/the-ark-church-of-sj/assets/GPG.png')}
-                  style={styles.gpgImage}
+                  source={require('/Users/kingatoki/Desktop/the-ark-church-of-sj/assets/shoes.png')}
+                  style={styles.shoesImage}
                 />
               </View>
               <Text style={{ marginVertical: '5%', fontStyle: 'italic' }}>
-                Ministry for Women
+                Shoes
               </Text>
               <TouchableOpacity
                 style={styles.learnMoreButton}
                 onPress={() => {
-                  this.setGpgModalVisible(true);
+                  this.setShoesModalVisible(true);
                 }}
               >
-                <Text>Learn more...</Text>
+                <Text>See What's Available</Text>
               </TouchableOpacity>
             </View>
-            <View style={styles.kingdomCloset}>
+            <View style={styles.accessories}>
               <View
                 style={{
                   shadowColor: '#000',
@@ -152,30 +156,54 @@ export default class GroupsComponent extends Component {
                 }}
               >
                 <Image
-                  source={require('/Users/kingatoki/Desktop/the-ark-church-of-sj/assets/KingdomCloset.png')}
-                  style={styles.kingdomClosetImage}
+                  source={require('/Users/kingatoki/Desktop/the-ark-church-of-sj/assets/accessories.png')}
+                  style={styles.accessoriesImage}
                 />
               </View>
               <Text style={{ marginTop: '5%', fontStyle: 'italic' }}>
-                Ministry Supporting
-              </Text>
-              <Text style={{ marginBottom: '5%', fontStyle: 'italic' }}>
-                our Homeless
+                Accessories
               </Text>
               <TouchableOpacity
                 style={styles.learnMoreButton}
                 onPress={() => {
-                  this.setKingdomClosetModalVisible(true);
+                  this.setAccessoriesModalVisible(true);
                 }}
               >
-                <Text>Learn more...</Text>
+                <Text>See What's Available</Text>
+              </TouchableOpacity>
+            </View>
+            <View style={styles.food}>
+              <View
+                style={{
+                  shadowColor: '#000',
+                  shadowOffset: { width: 0, height: 2 },
+                  shadowOpacity: 0.8,
+                  shadowRadius: 2,
+                  elevation: 5
+                }}
+              >
+                <Image
+                  source={require('/Users/kingatoki/Desktop/the-ark-church-of-sj/assets/food.png')}
+                  style={styles.foodImage}
+                />
+              </View>
+              <Text style={{ marginVertical: '5%', fontStyle: 'italic' }}>
+                Food
+              </Text>
+              <TouchableOpacity
+                style={styles.learnMoreButton}
+                onPress={() => {
+                  this.setFoodModalVisible(true);
+                }}
+              >
+                <Text>See What's Available</Text>
               </TouchableOpacity>
             </View>
           </View>
           <Modal
             animationType="slide"
             transparent={false}
-            visible={this.state.arkAngelsModalVisible}
+            visible={this.state.shirtModalVisible}
             onRequestClose={() => {
               alert('Modal has been closed.');
             }}
@@ -199,21 +227,154 @@ export default class GroupsComponent extends Component {
                   }}
                 >
                   <Image
-                    source={require('/Users/kingatoki/Desktop/the-ark-church-of-sj/assets/ArkAngels.png')}
-                    style={styles.arkAngelsImage}
+                    source={require('/Users/kingatoki/Desktop/the-ark-church-of-sj/assets/shirt.png')}
+                    style={styles.shirtImage}
                   />
                 </View>
                 <View>
                   <Text style={styles.descriptionText}>
-                    Our Ark Angels ministry is for our children from ages 3-8.
-                    We believe learning to know and love God starts from when we
-                    are young so we are able to build a strong foundation.
+                    Here is where the Images for the clothes will go.
                   </Text>
                   <Button
                     title="Done"
                     onPress={() => {
-                      this.setArkAngelsModalVisible(
-                        !this.state.arkAngelsModalVisible
+                      this.setShirtModalVisible(!this.state.shirtModalVisible);
+                    }}
+                  />
+                </View>
+              </View>
+            </ScrollView>
+          </Modal>
+          <Modal
+            animationType="slide"
+            transparent={false}
+            visible={this.state.pantsModalVisible}
+            onRequestClose={() => {
+              alert('Modal has been closed.');
+            }}
+          >
+            <ScrollView>
+              <View
+                style={{
+                  marginTop: 22,
+                  alignItems: 'center',
+                  justifyContent: 'center'
+                }}
+              >
+                <View
+                  style={{
+                    marginTop: 22,
+                    shadowColor: '#000',
+                    shadowOffset: { width: 0, height: 2 },
+                    shadowOpacity: 0.8,
+                    shadowRadius: 2,
+                    elevation: 5
+                  }}
+                >
+                  <Image
+                    source={require('/Users/kingatoki/Desktop/the-ark-church-of-sj/assets/pants.png')}
+                    style={styles.pantsImage}
+                  />
+                </View>
+                <View>
+                  <Text style={styles.descriptionText}>
+                    Images for the pants will go here
+                  </Text>
+                  <Button
+                    title="Done"
+                    onPress={() => {
+                      this.setPantsModalVisible(!this.state.pantsModalVisible);
+                    }}
+                  />
+                </View>
+              </View>
+            </ScrollView>
+          </Modal>
+          <Modal
+            animationType="slide"
+            transparent={false}
+            visible={this.state.shoesModalVisible}
+            onRequestClose={() => {
+              alert('Modal has been closed.');
+            }}
+          >
+            <ScrollView>
+              <View
+                style={{
+                  marginTop: 22,
+                  alignItems: 'center',
+                  justifyContent: 'center'
+                }}
+              >
+                <View
+                  style={{
+                    marginTop: 22,
+                    shadowColor: '#000',
+                    shadowOffset: { width: 0, height: 2 },
+                    shadowOpacity: 0.8,
+                    shadowRadius: 2,
+                    elevation: 5
+                  }}
+                >
+                  <Image
+                    source={require('/Users/kingatoki/Desktop/the-ark-church-of-sj/assets/shoes.png')}
+                    style={styles.shoesImage}
+                  />
+                </View>
+                <View>
+                  <Text style={styles.descriptionText}>
+                    Images for the shoes
+                  </Text>
+                  <Button
+                    title="Done"
+                    onPress={() => {
+                      this.setShoesModalVisible(!this.state.shoesModalVisible);
+                    }}
+                  />
+                </View>
+              </View>
+            </ScrollView>
+          </Modal>
+          <Modal
+            animationType="slide"
+            transparent={false}
+            visible={this.state.accessoriesModalVisible}
+            onRequestClose={() => {
+              alert('Modal has been closed.');
+            }}
+          >
+            <ScrollView>
+              <View
+                style={{
+                  marginTop: 22,
+                  alignItems: 'center',
+                  justifyContent: 'center'
+                }}
+              >
+                <View
+                  style={{
+                    marginTop: 22,
+                    shadowColor: '#000',
+                    shadowOffset: { width: 0, height: 2 },
+                    shadowOpacity: 0.8,
+                    shadowRadius: 2,
+                    elevation: 5
+                  }}
+                >
+                  <Image
+                    source={require('/Users/kingatoki/Desktop/the-ark-church-of-sj/assets/accessories.png')}
+                    style={styles.accessoriesImage}
+                  />
+                </View>
+                <View>
+                  <Text style={styles.descriptionText}>
+                    Images for accessories
+                  </Text>
+                  <Button
+                    title="Done"
+                    onPress={() => {
+                      this.setAccessoriesModalVisible(
+                        !this.state.accessoriesModalVisible
                       );
                     }}
                   />
@@ -224,7 +385,7 @@ export default class GroupsComponent extends Component {
           <Modal
             animationType="slide"
             transparent={false}
-            visible={this.state.kingdomKidsModalVisible}
+            visible={this.state.foodModalVisible}
             onRequestClose={() => {
               alert('Modal has been closed.');
             }}
@@ -248,120 +409,18 @@ export default class GroupsComponent extends Component {
                   }}
                 >
                   <Image
-                    source={require('/Users/kingatoki/Desktop/the-ark-church-of-sj/assets/KingdomKids.png')}
-                    style={styles.kingdomKidsImage}
+                    source={require('/Users/kingatoki/Desktop/the-ark-church-of-sj/assets/food.png')}
+                    style={styles.foodImage}
                   />
                 </View>
                 <View>
                   <Text style={styles.descriptionText}>
-                    Kingdom Kids is our ministry for our 9-12 year olds.
-                    Continuing on from the foundation we set while our young
-                    people were apart of our Ark Angels Ministry, we strengthen
-                    our children's desire to know and become closer to God.
+                    Here is where the Images for the food will go.
                   </Text>
                   <Button
                     title="Done"
                     onPress={() => {
-                      this.setKingdomKidsModalVisible(
-                        !this.state.kingdomKidsModalVisible
-                      );
-                    }}
-                  />
-                </View>
-              </View>
-            </ScrollView>
-          </Modal>
-          <Modal
-            animationType="slide"
-            transparent={false}
-            visible={this.state.gpgModalVisible}
-            onRequestClose={() => {
-              alert('Modal has been closed.');
-            }}
-          >
-            <ScrollView>
-              <View
-                style={{
-                  marginTop: 22,
-                  alignItems: 'center',
-                  justifyContent: 'center'
-                }}
-              >
-                <View
-                  style={{
-                    marginTop: 22,
-                    shadowColor: '#000',
-                    shadowOffset: { width: 0, height: 2 },
-                    shadowOpacity: 0.8,
-                    shadowRadius: 2,
-                    elevation: 5
-                  }}
-                >
-                  <Image
-                    source={require('/Users/kingatoki/Desktop/the-ark-church-of-sj/assets/GPG.png')}
-                    style={styles.gpgImage}
-                  />
-                </View>
-                <View>
-                  <Text style={styles.descriptionText}>
-                    Our Girl Power Group focuses on empowering our women and
-                    continually shaping our women to be leaders of the
-                    community.
-                  </Text>
-                  <Button
-                    title="Done"
-                    onPress={() => {
-                      this.setGpgModalVisible(!this.state.gpgModalVisible);
-                    }}
-                  />
-                </View>
-              </View>
-            </ScrollView>
-          </Modal>
-          <Modal
-            animationType="slide"
-            transparent={false}
-            visible={this.state.kingdomClosetModalVisible}
-            onRequestClose={() => {
-              alert('Modal has been closed.');
-            }}
-          >
-            <ScrollView>
-              <View
-                style={{
-                  marginTop: 22,
-                  alignItems: 'center',
-                  justifyContent: 'center'
-                }}
-              >
-                <View
-                  style={{
-                    marginTop: 22,
-                    shadowColor: '#000',
-                    shadowOffset: { width: 0, height: 2 },
-                    shadowOpacity: 0.8,
-                    shadowRadius: 2,
-                    elevation: 5
-                  }}
-                >
-                  <Image
-                    source={require('/Users/kingatoki/Desktop/the-ark-church-of-sj/assets/KingdomCloset.png')}
-                    style={styles.kingdomClosetImage}
-                  />
-                </View>
-                <View>
-                  <Text style={styles.descriptionText}>
-                    Our Kingdom Closet is our ministry dedicated to serving our
-                    homeless community. We aim to support our homeless brothers
-                    and sisters in any way we can and aid those suffering from
-                    hard times with clothes and food.
-                  </Text>
-                  <Button
-                    title="Done"
-                    onPress={() => {
-                      this.setKingdomClosetModalVisible(
-                        !this.state.kingdomClosetModalVisible
-                      );
+                      this.setFoodModalVisible(!this.state.foodModalVisible);
                     }}
                   />
                 </View>
@@ -390,44 +449,54 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 90
   },
-  arkAngels: {
+  shirt: {
     justifyContent: 'center',
     alignItems: 'center',
     marginHorizontal: '2%',
     marginVertical: 22
   },
-  kingdomKids: {
+  pants: {
     justifyContent: 'center',
     alignItems: 'center',
     marginHorizontal: '2%',
     marginVertical: 22
   },
-  gpg: {
+  shoes: {
     justifyContent: 'center',
     alignItems: 'center',
     marginHorizontal: '2%',
     marginVertical: 22
   },
-  kingdomCloset: {
+  accessories: {
     justifyContent: 'center',
     alignItems: 'center',
     marginHorizontal: '2%',
     marginVertical: 22
   },
-  arkAngelsImage: {
+  food: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginHorizontal: '2%',
+    marginVertical: 22
+  },
+  shirtImage: {
     width: width * 0.8,
     height: width * 0.8
   },
-  kingdomKidsImage: {
+  pantsImage: {
     width: width * 0.8,
     height: width * 0.8
   },
 
-  gpgImage: {
+  shoesImage: {
     width: width * 0.8,
     height: width * 0.8
   },
-  kingdomClosetImage: {
+  accessoriesImage: {
+    width: width * 0.8,
+    height: width * 0.8
+  },
+  foodImage: {
     width: width * 0.8,
     height: width * 0.8
   },

@@ -15,6 +15,7 @@ import MenuComponent from './frontend/components/MenuComponent/MenuComponent';
 import MeetThePastorsComponent from './frontend/components/MeetThePastorsComponent/MeetThePastorComponent';
 import EventsComponent from './frontend/components/EventsComponent/EventsComponent';
 import ReviewsComponent from './frontend/components/ReviewsComponent/ReviewsComponent';
+import KingdomClosetComponent from './frontend/components/KingdomClosetComponent/KingdomClosetComponent';
 
 const Menu = StackNavigator({
   Menu: {
@@ -39,6 +40,12 @@ const Menu = StackNavigator({
     screen: ReviewsComponent,
     navigationOptions: {
       title: 'Reviews'
+    }
+  },
+  KingdomCloset: {
+    screen: KingdomClosetComponent,
+    navigationOptions: {
+      title: 'Kingdom Closet'
     }
   }
 });

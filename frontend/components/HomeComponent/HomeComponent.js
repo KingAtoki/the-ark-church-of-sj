@@ -88,7 +88,12 @@ export default class HomeComponent extends Component {
       require('/Users/kingatoki/Desktop/the-ark-church-of-sj/assets/icons8-menu-50.png'),
       require('/Users/kingatoki/Desktop/the-ark-church-of-sj/assets/TheArkChurch1024x1024.png'),
       require('/Users/kingatoki/Desktop/the-ark-church-of-sj/assets/Matt&Janet.png'),
-      require('/Users/kingatoki/Desktop/the-ark-church-of-sj/assets/icons8-more-than-50.png')
+      require('/Users/kingatoki/Desktop/the-ark-church-of-sj/assets/icons8-more-than-50.png'),
+      require('/Users/kingatoki/Desktop/the-ark-church-of-sj/assets/shirt.png'),
+      require('/Users/kingatoki/Desktop/the-ark-church-of-sj/assets/pants.png'),
+      require('/Users/kingatoki/Desktop/the-ark-church-of-sj/assets/shoes.png'),
+      require('/Users/kingatoki/Desktop/the-ark-church-of-sj/assets/accessories.png'),
+      require('/Users/kingatoki/Desktop/the-ark-church-of-sj/assets/food.png')
     ];
 
     const cacheImages = images.map(image => {
