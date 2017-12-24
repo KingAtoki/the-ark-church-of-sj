@@ -86,7 +86,6 @@ export default class NotesComponent extends Component {
     const index = this.state.notes.indexOf(this.state.currentNote);
     let notes = this.state.notes.slice();
     notes.splice(index, 1);
-    console.log('notes after splice' + notes);
     this.setState({
       notes: notes
     });
