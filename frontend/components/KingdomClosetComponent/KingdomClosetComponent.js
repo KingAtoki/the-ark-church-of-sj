@@ -8,10 +8,18 @@ import {
   Modal,
   TouchableOpacity,
   ScrollView,
-  Dimensions
+  Dimensions,
+  ActivityIndicator,
+  FlatList,
+  Alert
 } from 'react-native';
 
 import { StackNavigator } from 'react-navigation';
+
+const Airtable = require('airtable');
+const base = new Airtable({ apiKey: 'keyEvd4PvQslvlmrU' }).base(
+  'appfuoZiqfimLOYcQ'
+);
 
 let { height, width } = Dimensions.get('window');
 
@@ -22,7 +30,7 @@ export default class KingdomClosetComponent extends Component {
     tabBarLabel: ' ',
     tabBarIcon: ({ tintColor }) => (
       <Image
-        source={require('/Users/kingatoki/Desktop/the-ark-church-of-sj/assets/icons8-user-groups.png')}
+        source={require('/Users/kingatoki/Desktop/the-ark-church-of-sj/assets/icons8-menu-50.png')}
         style={[styles.icon, { tintColor: tintColor }]}
       />
     )
@@ -32,25 +40,212 @@ export default class KingdomClosetComponent extends Component {
     pantsModalVisible: false,
     shoesModalVisible: false,
     accessoriesModalVisible: false,
-    foodModalVisible: false
+    foodModalVisible: false,
+    shirts: [],
+    pants: [],
+    shoes: [],
+    accessories: [],
+    food: [],
+    isReady: false
   };
 
   setShirtModalVisible = visible => {
-    this.setState({ shirtModalVisible: visible });
+    if (this.state.shirts == 'Nothing available at this time.') {
+      Alert.alert(
+        'Sorry.',
+        'Nothing available at this time.',
+        [
+          {
+            text: 'OK',
+            onPress: () => console.log('ok')
+          }
+        ],
+        { cancelable: false }
+      );
+    } else {
+      this.setState({ shirtModalVisible: visible });
+    }
   };
   setPantsModalVisible = visible => {
-    this.setState({ pantsModalVisible: visible });
+    if (this.state.pants == 'Nothing available at this time.') {
+      Alert.alert(
+        'Sorry.',
+        'Nothing available at this time.',
+        [
+          {
+            text: 'OK',
+            onPress: () => console.log('ok')
+          }
+        ],
+        { cancelable: false }
+      );
+    } else {
+      this.setState({ pantsModalVisible: visible });
+    }
   };
   setShoesModalVisible = visible => {
-    this.setState({ shoesModalVisible: visible });
+    if (this.state.shoes == 'Nothing available at this time.') {
+      Alert.alert(
+        'Sorry.',
+        'Nothing available at this time.',
+        [
+          {
+            text: 'OK',
+            onPress: () => console.log('ok')
+          }
+        ],
+        { cancelable: false }
+      );
+    } else {
+      this.setState({ shoesModalVisible: visible });
+    }
   };
   setAccessoriesModalVisible = visible => {
-    this.setState({ accessoriesModalVisible: visible });
+    if (this.state.accessories == 'Nothing available at this time.') {
+      Alert.alert(
+        'Sorry.',
+        'Nothing available at this time.',
+        [
+          {
+            text: 'OK',
+            onPress: () => console.log('ok')
+          }
+        ],
+        { cancelable: false }
+      );
+    } else {
+      this.setState({ accessoriesModalVisible: visible });
+    }
   };
   setFoodModalVisible = visible => {
-    this.setState({ foodModalVisible: visible });
+    if (this.state.food == 'Nothing available at this time.') {
+      Alert.alert(
+        'Sorry.',
+        'Nothing available at this time.',
+        [
+          {
+            text: 'OK',
+            onPress: () => console.log('ok')
+          }
+        ],
+        { cancelable: false }
+      );
+    } else {
+      this.setState({ foodModalVisible: visible });
+    }
+  };
+
+  componentDidMount = async () => {
+    let shirts = [];
+    let pants = [];
+    let shoes = [];
+    let accessories = [];
+    let food = [];
+    try {
+      base('Items')
+        .select({
+          view: 'Grid view'
+        })
+        .eachPage(
+          function page(records, fetchNextPage) {
+            // This function (`page`) will get called for each page of records.
+
+            records.forEach(function(record) {
+              switch (record.fields.Item) {
+                case 'Shirts':
+                  if (record.fields.Image == undefined) {
+                    shirts.push('Nothing available at this time.');
+                  } else {
+                    for (let i = 0; i < record.fields.Image.length; i++) {
+                      shirts.push(record.fields.Image[i].url);
+                    }
+                  }
+                  break;
+                case 'Pants':
+                  if (record.fields.Image == undefined) {
+                    pants.push('Nothing available at this time.');
+                  } else {
+                    for (let i = 0; i < record.fields.Image.length; i++) {
+                      pants.push(record.fields.Image[i].url);
+                    }
+                  }
+                  break;
+                case 'Shoes':
+                  if (record.fields.Image == undefined) {
+                    shoes.push('Nothing available at this time.');
+                  } else {
+                    for (let i = 0; i < record.fields.Image.length; i++) {
+                      shoes.push(record.fields.Image[i].url);
+                    }
+                  }
+                  break;
+                case 'Accessories':
+                  if (record.fields.Image == undefined) {
+                    accessories.push('Nothing available at this time.');
+                  } else {
+                    for (let i = 0; i < record.fields.Image.length; i++) {
+                      accessories.push(record.fields.Image[i].url);
+                    }
+                  }
+                  break;
+                case 'Food':
+                  if (record.fields.Image == undefined) {
+                    food.push('Nothing available at this time.');
+                  } else {
+                    for (let i = 0; i < record.fields.Image.length; i++) {
+                      food.push(record.fields.Image[i].url);
+                    }
+                  }
+                  break;
+                default:
+                  console.log('I did not read any of that');
+                  break;
+              }
+            });
+
+            // To fetch the next page of records, call `fetchNextPage`.
+            // If there are more records, `page` will get called again.
+            // If there are no more records, `done` will get called.
+            fetchNextPage();
+          },
+          (done = err => {
+            if (err) {
+              console.error(err);
+              return;
+            } else {
+              this.setState({
+                shirts: shirts,
+                pants: pants,
+                shoes,
+                shoes,
+                accessories: accessories,
+                food: food
+              });
+              this.setState({ isReady: true });
+            }
+          })
+        );
+    } catch (err) {
+      console.log(err);
+    }
   };
   render() {
+    if (!this.state.isReady) {
+      return (
+        <View
+          style={{
+            marginTop: 22,
+            alignItems: 'center',
+            justifyContent: 'center'
+          }}
+        >
+          <Text style={{ fontSize: 40, marginTop: '5%' }}>Kingdom Closet</Text>
+          <View style={{ marginTop: '10%' }}>
+            <ActivityIndicator size="small" color="grey" />
+          </View>
+        </View>
+      );
+    }
     return (
       <View
         style={{
@@ -161,7 +356,7 @@ export default class KingdomClosetComponent extends Component {
                 />
               </View>
               <Text style={{ marginTop: '5%', fontStyle: 'italic' }}>
-                Accessories
+                Accessories/Extras
               </Text>
               <TouchableOpacity
                 style={styles.learnMoreButton}
@@ -208,42 +403,36 @@ export default class KingdomClosetComponent extends Component {
               alert('Modal has been closed.');
             }}
           >
-            <ScrollView>
-              <View
-                style={{
-                  marginTop: 22,
-                  alignItems: 'center',
-                  justifyContent: 'center'
-                }}
-              >
-                <View
-                  style={{
-                    marginTop: 22,
-                    shadowColor: '#000',
-                    shadowOffset: { width: 0, height: 2 },
-                    shadowOpacity: 0.8,
-                    shadowRadius: 2,
-                    elevation: 5
+            <View
+              style={{
+                marginTop: 22,
+                alignItems: 'center',
+                justifyContent: 'center'
+              }}
+            >
+              <View>
+                <FlatList
+                  showsVerticalScrollIndicator={false}
+                  data={this.state.shirts}
+                  renderItem={({ item }) => (
+                    <View>
+                      <Image
+                        source={{ uri: item }}
+                        style={styles.modalImage}
+                        resizeMode="contain"
+                      />
+                    </View>
+                  )}
+                  keyExtractor={(item, index) => index}
+                />
+                <Button
+                  title="Done"
+                  onPress={() => {
+                    this.setShirtModalVisible(!this.state.shirtModalVisible);
                   }}
-                >
-                  <Image
-                    source={require('/Users/kingatoki/Desktop/the-ark-church-of-sj/assets/shirt.png')}
-                    style={styles.shirtImage}
-                  />
-                </View>
-                <View>
-                  <Text style={styles.descriptionText}>
-                    Here is where the Images for the clothes will go.
-                  </Text>
-                  <Button
-                    title="Done"
-                    onPress={() => {
-                      this.setShirtModalVisible(!this.state.shirtModalVisible);
-                    }}
-                  />
-                </View>
+                />
               </View>
-            </ScrollView>
+            </View>
           </Modal>
           <Modal
             animationType="slide"
@@ -253,42 +442,36 @@ export default class KingdomClosetComponent extends Component {
               alert('Modal has been closed.');
             }}
           >
-            <ScrollView>
-              <View
-                style={{
-                  marginTop: 22,
-                  alignItems: 'center',
-                  justifyContent: 'center'
-                }}
-              >
-                <View
-                  style={{
-                    marginTop: 22,
-                    shadowColor: '#000',
-                    shadowOffset: { width: 0, height: 2 },
-                    shadowOpacity: 0.8,
-                    shadowRadius: 2,
-                    elevation: 5
+            <View
+              style={{
+                marginTop: 22,
+                alignItems: 'center',
+                justifyContent: 'center'
+              }}
+            >
+              <View>
+                <FlatList
+                  showsVerticalScrollIndicator={false}
+                  data={this.state.pants}
+                  renderItem={({ item }) => (
+                    <View>
+                      <Image
+                        source={{ uri: item }}
+                        style={styles.modalImage}
+                        resizeMode="contain"
+                      />
+                    </View>
+                  )}
+                  keyExtractor={(item, index) => index}
+                />
+                <Button
+                  title="Done"
+                  onPress={() => {
+                    this.setPantsModalVisible(!this.state.pantsModalVisible);
                   }}
-                >
-                  <Image
-                    source={require('/Users/kingatoki/Desktop/the-ark-church-of-sj/assets/pants.png')}
-                    style={styles.pantsImage}
-                  />
-                </View>
-                <View>
-                  <Text style={styles.descriptionText}>
-                    Images for the pants will go here
-                  </Text>
-                  <Button
-                    title="Done"
-                    onPress={() => {
-                      this.setPantsModalVisible(!this.state.pantsModalVisible);
-                    }}
-                  />
-                </View>
+                />
               </View>
-            </ScrollView>
+            </View>
           </Modal>
           <Modal
             animationType="slide"
@@ -298,42 +481,36 @@ export default class KingdomClosetComponent extends Component {
               alert('Modal has been closed.');
             }}
           >
-            <ScrollView>
-              <View
-                style={{
-                  marginTop: 22,
-                  alignItems: 'center',
-                  justifyContent: 'center'
-                }}
-              >
-                <View
-                  style={{
-                    marginTop: 22,
-                    shadowColor: '#000',
-                    shadowOffset: { width: 0, height: 2 },
-                    shadowOpacity: 0.8,
-                    shadowRadius: 2,
-                    elevation: 5
+            <View
+              style={{
+                marginTop: 22,
+                alignItems: 'center',
+                justifyContent: 'center'
+              }}
+            >
+              <View>
+                <FlatList
+                  showsVerticalScrollIndicator={false}
+                  data={this.state.shoes}
+                  renderItem={({ item }) => (
+                    <View>
+                      <Image
+                        source={{ uri: item }}
+                        style={styles.modalImage}
+                        resizeMode="contain"
+                      />
+                    </View>
+                  )}
+                  keyExtractor={(item, index) => index}
+                />
+                <Button
+                  title="Done"
+                  onPress={() => {
+                    this.setShoesModalVisible(!this.state.shoesModalVisible);
                   }}
-                >
-                  <Image
-                    source={require('/Users/kingatoki/Desktop/the-ark-church-of-sj/assets/shoes.png')}
-                    style={styles.shoesImage}
-                  />
-                </View>
-                <View>
-                  <Text style={styles.descriptionText}>
-                    Images for the shoes
-                  </Text>
-                  <Button
-                    title="Done"
-                    onPress={() => {
-                      this.setShoesModalVisible(!this.state.shoesModalVisible);
-                    }}
-                  />
-                </View>
+                />
               </View>
-            </ScrollView>
+            </View>
           </Modal>
           <Modal
             animationType="slide"
@@ -343,44 +520,38 @@ export default class KingdomClosetComponent extends Component {
               alert('Modal has been closed.');
             }}
           >
-            <ScrollView>
-              <View
-                style={{
-                  marginTop: 22,
-                  alignItems: 'center',
-                  justifyContent: 'center'
-                }}
-              >
-                <View
-                  style={{
-                    marginTop: 22,
-                    shadowColor: '#000',
-                    shadowOffset: { width: 0, height: 2 },
-                    shadowOpacity: 0.8,
-                    shadowRadius: 2,
-                    elevation: 5
+            <View
+              style={{
+                marginTop: 22,
+                alignItems: 'center',
+                justifyContent: 'center'
+              }}
+            >
+              <View>
+                <FlatList
+                  showsVerticalScrollIndicator={false}
+                  data={this.state.accessories}
+                  renderItem={({ item }) => (
+                    <View>
+                      <Image
+                        source={{ uri: item }}
+                        style={styles.modalImage}
+                        resizeMode="contain"
+                      />
+                    </View>
+                  )}
+                  keyExtractor={(item, index) => index}
+                />
+                <Button
+                  title="Done"
+                  onPress={() => {
+                    this.setAccessoriesModalVisible(
+                      !this.state.accessoriesModalVisible
+                    );
                   }}
-                >
-                  <Image
-                    source={require('/Users/kingatoki/Desktop/the-ark-church-of-sj/assets/accessories.png')}
-                    style={styles.accessoriesImage}
-                  />
-                </View>
-                <View>
-                  <Text style={styles.descriptionText}>
-                    Images for accessories
-                  </Text>
-                  <Button
-                    title="Done"
-                    onPress={() => {
-                      this.setAccessoriesModalVisible(
-                        !this.state.accessoriesModalVisible
-                      );
-                    }}
-                  />
-                </View>
+                />
               </View>
-            </ScrollView>
+            </View>
           </Modal>
           <Modal
             animationType="slide"
@@ -390,42 +561,36 @@ export default class KingdomClosetComponent extends Component {
               alert('Modal has been closed.');
             }}
           >
-            <ScrollView>
-              <View
-                style={{
-                  marginTop: 22,
-                  alignItems: 'center',
-                  justifyContent: 'center'
-                }}
-              >
-                <View
-                  style={{
-                    marginTop: 22,
-                    shadowColor: '#000',
-                    shadowOffset: { width: 0, height: 2 },
-                    shadowOpacity: 0.8,
-                    shadowRadius: 2,
-                    elevation: 5
+            <View
+              style={{
+                marginTop: 22,
+                alignItems: 'center',
+                justifyContent: 'center'
+              }}
+            >
+              <View>
+                <FlatList
+                  showsVerticalScrollIndicator={false}
+                  data={this.state.food}
+                  renderItem={({ item }) => (
+                    <View>
+                      <Image
+                        source={{ uri: item }}
+                        style={styles.modalImage}
+                        resizeMode="contain"
+                      />
+                    </View>
+                  )}
+                  keyExtractor={(item, index) => index}
+                />
+                <Button
+                  title="Done"
+                  onPress={() => {
+                    this.setFoodModalVisible(!this.state.foodModalVisible);
                   }}
-                >
-                  <Image
-                    source={require('/Users/kingatoki/Desktop/the-ark-church-of-sj/assets/food.png')}
-                    style={styles.foodImage}
-                  />
-                </View>
-                <View>
-                  <Text style={styles.descriptionText}>
-                    Here is where the Images for the food will go.
-                  </Text>
-                  <Button
-                    title="Done"
-                    onPress={() => {
-                      this.setFoodModalVisible(!this.state.foodModalVisible);
-                    }}
-                  />
-                </View>
+                />
               </View>
-            </ScrollView>
+            </View>
           </Modal>
         </ScrollView>
       </View>
@@ -437,6 +602,11 @@ const styles = StyleSheet.create({
   icon: {
     width: 30,
     height: 30
+  },
+  modalImage: {
+    width: width * 0.8,
+    height: width * 0.8,
+    marginVertical: '10%'
   },
   mainContainer: {
     flex: 1,
