@@ -232,13 +232,7 @@ export default class KingdomClosetComponent extends Component {
   render() {
     if (!this.state.isReady) {
       return (
-        <View
-          style={{
-            marginTop: 22,
-            alignItems: 'center',
-            justifyContent: 'center'
-          }}
-        >
+        <View style={styles.mainModalView}>
           <Text style={{ fontSize: 40, marginTop: '5%' }}>Kingdom Closet</Text>
           <View style={{ marginTop: '10%' }}>
             <ActivityIndicator size="small" color="grey" />
@@ -247,29 +241,15 @@ export default class KingdomClosetComponent extends Component {
       );
     }
     return (
-      <View
-        style={{
-          marginTop: 22,
-          alignItems: 'center',
-          justifyContent: 'center'
-        }}
-      >
+      <View style={styles.mainModalView}>
         <Text style={{ fontSize: 40, marginTop: '5%' }}>Kingdom Closet</Text>
         <ScrollView showsVerticalScrollIndicator={false}>
           <View>
-            <View style={styles.shirt}>
-              <View
-                style={{
-                  shadowColor: '#000',
-                  shadowOffset: { width: 0, height: 2 },
-                  shadowOpacity: 0.8,
-                  shadowRadius: 2,
-                  elevation: 5
-                }}
-              >
+            <View style={styles.mainView}>
+              <View style={styles.shadowStyle}>
                 <Image
                   source={require('/Users/kingatoki/Desktop/the-ark-church-of-sj/assets/shirt.png')}
-                  style={styles.shirtImage}
+                  style={styles.image}
                 />
               </View>
               <Text style={{ marginVertical: '5%', fontStyle: 'italic' }}>
@@ -284,19 +264,11 @@ export default class KingdomClosetComponent extends Component {
                 <Text>See What's Available</Text>
               </TouchableOpacity>
             </View>
-            <View style={styles.pants}>
-              <View
-                style={{
-                  shadowColor: '#000',
-                  shadowOffset: { width: 0, height: 2 },
-                  shadowOpacity: 0.8,
-                  shadowRadius: 2,
-                  elevation: 5
-                }}
-              >
+            <View style={styles.mainView}>
+              <View style={styles.shadowStyle}>
                 <Image
                   source={require('/Users/kingatoki/Desktop/the-ark-church-of-sj/assets/pants.png')}
-                  style={styles.pantsImage}
+                  style={styles.image}
                 />
               </View>
               <Text style={{ marginVertical: '5%', fontStyle: 'italic' }}>
@@ -313,19 +285,11 @@ export default class KingdomClosetComponent extends Component {
             </View>
           </View>
           <View>
-            <View style={styles.shoes}>
-              <View
-                style={{
-                  shadowColor: '#000',
-                  shadowOffset: { width: 0, height: 2 },
-                  shadowOpacity: 0.8,
-                  shadowRadius: 2,
-                  elevation: 5
-                }}
-              >
+            <View style={styles.mainView}>
+              <View style={styles.shadowStyle}>
                 <Image
                   source={require('/Users/kingatoki/Desktop/the-ark-church-of-sj/assets/shoes.png')}
-                  style={styles.shoesImage}
+                  style={styles.image}
                 />
               </View>
               <Text style={{ marginVertical: '5%', fontStyle: 'italic' }}>
@@ -340,19 +304,11 @@ export default class KingdomClosetComponent extends Component {
                 <Text>See What's Available</Text>
               </TouchableOpacity>
             </View>
-            <View style={styles.accessories}>
-              <View
-                style={{
-                  shadowColor: '#000',
-                  shadowOffset: { width: 0, height: 2 },
-                  shadowOpacity: 0.8,
-                  shadowRadius: 2,
-                  elevation: 5
-                }}
-              >
+            <View style={styles.mainView}>
+              <View style={styles.shadowStyle}>
                 <Image
                   source={require('/Users/kingatoki/Desktop/the-ark-church-of-sj/assets/accessories.png')}
-                  style={styles.accessoriesImage}
+                  style={styles.image}
                 />
               </View>
               <Text style={{ marginTop: '5%', fontStyle: 'italic' }}>
@@ -367,19 +323,11 @@ export default class KingdomClosetComponent extends Component {
                 <Text>See What's Available</Text>
               </TouchableOpacity>
             </View>
-            <View style={styles.food}>
-              <View
-                style={{
-                  shadowColor: '#000',
-                  shadowOffset: { width: 0, height: 2 },
-                  shadowOpacity: 0.8,
-                  shadowRadius: 2,
-                  elevation: 5
-                }}
-              >
+            <View style={styles.mainView}>
+              <View style={styles.shadowStyle}>
                 <Image
                   source={require('/Users/kingatoki/Desktop/the-ark-church-of-sj/assets/food.png')}
-                  style={styles.foodImage}
+                  style={styles.image}
                 />
               </View>
               <Text style={{ marginVertical: '5%', fontStyle: 'italic' }}>
@@ -403,13 +351,7 @@ export default class KingdomClosetComponent extends Component {
               alert('Modal has been closed.');
             }}
           >
-            <View
-              style={{
-                marginTop: 22,
-                alignItems: 'center',
-                justifyContent: 'center'
-              }}
-            >
+            <View style={styles.mainModalView}>
               <View>
                 <FlatList
                   showsVerticalScrollIndicator={false}
@@ -442,13 +384,7 @@ export default class KingdomClosetComponent extends Component {
               alert('Modal has been closed.');
             }}
           >
-            <View
-              style={{
-                marginTop: 22,
-                alignItems: 'center',
-                justifyContent: 'center'
-              }}
-            >
+            <View style={styles.mainModalView}>
               <View>
                 <FlatList
                   showsVerticalScrollIndicator={false}
@@ -481,13 +417,7 @@ export default class KingdomClosetComponent extends Component {
               alert('Modal has been closed.');
             }}
           >
-            <View
-              style={{
-                marginTop: 22,
-                alignItems: 'center',
-                justifyContent: 'center'
-              }}
-            >
+            <View style={styles.mainModalView}>
               <View>
                 <FlatList
                   showsVerticalScrollIndicator={false}
@@ -520,13 +450,7 @@ export default class KingdomClosetComponent extends Component {
               alert('Modal has been closed.');
             }}
           >
-            <View
-              style={{
-                marginTop: 22,
-                alignItems: 'center',
-                justifyContent: 'center'
-              }}
-            >
+            <View style={styles.mainModalView}>
               <View>
                 <FlatList
                   showsVerticalScrollIndicator={false}
@@ -561,13 +485,7 @@ export default class KingdomClosetComponent extends Component {
               alert('Modal has been closed.');
             }}
           >
-            <View
-              style={{
-                marginTop: 22,
-                alignItems: 'center',
-                justifyContent: 'center'
-              }}
-            >
+            <View style={styles.mainModalView}>
               <View>
                 <FlatList
                   showsVerticalScrollIndicator={false}
@@ -619,56 +537,27 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 90
   },
-  shirt: {
+  mainView: {
     justifyContent: 'center',
     alignItems: 'center',
     marginHorizontal: '2%',
     marginVertical: 22
   },
-  pants: {
-    justifyContent: 'center',
+  mainModalView: {
+    marginTop: 22,
     alignItems: 'center',
-    marginHorizontal: '2%',
-    marginVertical: 22
+    justifyContent: 'center'
   },
-  shoes: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginHorizontal: '2%',
-    marginVertical: 22
-  },
-  accessories: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginHorizontal: '2%',
-    marginVertical: 22
-  },
-  food: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginHorizontal: '2%',
-    marginVertical: 22
-  },
-  shirtImage: {
+  image: {
     width: width * 0.8,
     height: width * 0.8
   },
-  pantsImage: {
-    width: width * 0.8,
-    height: width * 0.8
-  },
-
-  shoesImage: {
-    width: width * 0.8,
-    height: width * 0.8
-  },
-  accessoriesImage: {
-    width: width * 0.8,
-    height: width * 0.8
-  },
-  foodImage: {
-    width: width * 0.8,
-    height: width * 0.8
+  shadowStyle: {
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.8,
+    shadowRadius: 2,
+    elevation: 5
   },
   descriptionText: {
     flexWrap: 'wrap',
