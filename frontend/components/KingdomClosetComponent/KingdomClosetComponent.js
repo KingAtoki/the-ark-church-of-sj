@@ -24,16 +24,18 @@ const base = new Airtable({ apiKey: 'keyEvd4PvQslvlmrU' }).base(
 let { height, width } = Dimensions.get('window');
 
 export default class KingdomClosetComponent extends Component {
-  static navigationOptions = {
-    gesturesEnabled: false,
-    header: null,
-    tabBarLabel: ' ',
-    tabBarIcon: ({ tintColor }) => (
-      <Image
-        source={require('/Users/kingatoki/Desktop/the-ark-church-of-sj/assets/icons8-menu-50.png')}
-        style={[styles.icon, { tintColor: tintColor }]}
-      />
-    )
+  static navigationOptions = ({ navigation }) => {
+    const { params = {} } = navigation.state;
+    return {
+      headerBackTitle: null,
+      tabBarLabel: ' ',
+      tabBarIcon: ({ tintColor }) => (
+        <Image
+          source={require('/Users/kingatoki/Desktop/the-ark-church-of-sj/assets/icons8-menu-50.png')}
+          style={[styles.icon, { tintColor: tintColor }]}
+        />
+      )
+    };
   };
   state = {
     shirtModalVisible: false,
@@ -233,7 +235,6 @@ export default class KingdomClosetComponent extends Component {
     if (!this.state.isReady) {
       return (
         <View style={styles.mainModalView}>
-          <Text style={{ fontSize: 40, marginTop: '5%' }}>Kingdom Closet</Text>
           <View style={{ marginTop: '10%' }}>
             <ActivityIndicator size="small" color="grey" />
           </View>
@@ -242,7 +243,6 @@ export default class KingdomClosetComponent extends Component {
     }
     return (
       <View style={styles.mainModalView}>
-        <Text style={{ fontSize: 40, marginTop: '5%' }}>Kingdom Closet</Text>
         <ScrollView showsVerticalScrollIndicator={false}>
           <View>
             <View style={styles.mainView}>
