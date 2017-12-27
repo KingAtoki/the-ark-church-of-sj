@@ -286,18 +286,6 @@ export default class TithesComponent extends Component {
     }
   }
 
-  async removeCustID() {
-    //Only using this for testing
-    try {
-      await AsyncStorage.removeItem('customerID');
-      this.setState({
-        alreadyACustomer: false
-      });
-    } catch (error) {
-      console.log('Cant remove ID');
-    }
-  }
-
   cancel = () => {
     this.setState({
       addCardModalVisible: false,
@@ -436,7 +424,6 @@ export default class TithesComponent extends Component {
               <Text style={{ color: 'white' }}>Set Payment Method</Text>
             </TouchableOpacity>
           </View>
-          <Button onPress={() => this.removeCustID()} title="Remove ID" />
           <Modal
             animationType="slide"
             transparent={false}
