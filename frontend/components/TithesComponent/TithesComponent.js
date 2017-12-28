@@ -702,6 +702,7 @@ const styles = StyleSheet.create({
   buttons: {
     justifyContent: 'center',
     alignItems: 'center',
-    flexDirection: 'row'
+    flexDirection: 'row',
+    marginBottom: '5%'
   }
 });
