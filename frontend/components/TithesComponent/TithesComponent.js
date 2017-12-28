@@ -186,6 +186,21 @@ export default class TithesComponent extends Component {
               );
             })
             .catch(err => {
+              Alert.alert(
+                'Failed',
+                'Failed',
+                [
+                  {
+                    text: 'OK',
+                    onPress: () =>
+                      this.setState({
+                        amount: '',
+                        paymentModalVisible: false
+                      })
+                  }
+                ],
+                { cancelable: false }
+              );
               console.log('Axios error:' + err);
             });
         } catch (error) {
@@ -463,6 +478,7 @@ export default class TithesComponent extends Component {
                     <Text>Card No.</Text>
                   </View>
                   <TextInput
+                    returnKeyType="done"
                     placeholder="4242424242424242"
                     style={{
                       height: 50,
@@ -509,6 +525,7 @@ export default class TithesComponent extends Component {
                     <Text>Exp Mo.</Text>
                   </View>
                   <TextInput
+                    returnKeyType="done"
                     placeholder="02"
                     style={{
                       height: 50,
@@ -554,6 +571,7 @@ export default class TithesComponent extends Component {
                     <Text>Exp Yr.</Text>
                   </View>
                   <TextInput
+                    returnKeyType="done"
                     placeholder="21"
                     style={{
                       height: 50,
@@ -599,6 +617,7 @@ export default class TithesComponent extends Component {
                     <Text>CVC</Text>
                   </View>
                   <TextInput
+                    returnKeyType="done"
                     placeholder="999"
                     style={{
                       height: 50,
@@ -656,6 +675,7 @@ export default class TithesComponent extends Component {
             <View style={{ marginTop: '10%' }}>
               <View style={{ justifyContent: 'center', alignItems: 'center' }}>
                 <TextInput
+                  returnKeyType="done"
                   placeholder="$"
                   placeholderTextColor="black"
                   fontSize={50}

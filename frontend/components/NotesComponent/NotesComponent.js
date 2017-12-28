@@ -196,6 +196,7 @@ export default class NotesComponent extends Component {
             >
               <View>
                 <TextInput
+                  returnKeyType="done"
                   placeholder="Enter Title"
                   style={{
                     height: 40,
