@@ -45,6 +45,7 @@ export default class EventsComponent extends React.PureComponent {
     let eventName = '';
     let eventDescription = '';
     let date = '';
+    let image = '';
     let events = this.state.events;
     try {
       await base('Events')
@@ -59,11 +60,13 @@ export default class EventsComponent extends React.PureComponent {
             records.forEach(function(record) {
               eventName = record.get('Event');
               eventDescription = record.get('Notes');
+              image = record.fields.Image[0].url;
               date = moment(record.get('Date')).format('MMMM Do YYYY');
               events.push({
                 eventName: eventName,
                 eventDescription: eventDescription,
-                date: date
+                date: date,
+                image: image
               });
             });
 
@@ -124,6 +127,18 @@ export default class EventsComponent extends React.PureComponent {
               </View>
               <View
                 style={{
+                  justifyContent: 'center',
+                  alignItems: 'center'
+                }}
+              >
+                <Image
+                  source={{ uri: item.image }}
+                  style={styles.image}
+                  resizeMode="contain"
+                />
+              </View>
+              <View
+                style={{
                   marginBottom: '10%',
                   justifyContent: 'center',
                   alignItems: 'center'
@@ -156,5 +171,10 @@ const styles = StyleSheet.create({
   icon: {
     width: 30,
     height: 30
+  },
+  image: {
+    width: width * 0.8,
+    height: width * 0.8,
+    marginVertical: '10%'
   }
 });
