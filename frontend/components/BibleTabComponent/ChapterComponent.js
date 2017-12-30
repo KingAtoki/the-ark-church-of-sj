@@ -3,17 +3,19 @@ import {
   StyleSheet,
   Text,
   View,
-  AppRegistry,
   Image,
   FlatList,
   Button,
   Alert,
   AsyncStorage,
-  TouchableOpacity
+  TouchableOpacity,
+  Dimensions
 } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 
 import Verses from './Verses';
+
+let { height, width } = Dimensions.get('window');
 
 export default class ChapterComponent extends Component {
   constructor(props) {
@@ -271,8 +273,17 @@ export default class ChapterComponent extends Component {
         <FlatList
           numColumns={5}
           data={verses}
+          showsVerticalScrollIndicator={false}
           renderItem={({ item }) => (
-            <TouchableOpacity style={styles.numberBox}>
+            <TouchableOpacity
+              style={styles.numberBox}
+              onPress={() =>
+                this.props.navigation.navigate('Verses', {
+                  chapter: { item },
+                  book: { book }
+                })
+              }
+            >
               <Text
                 onPress={() =>
                   this.props.navigation.navigate('Verses', {
@@ -300,8 +311,7 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   itemText: {
-    fontSize: 30,
-    marginLeft: '5%'
+    fontSize: 25
   },
   icon: {
     width: 30,
@@ -310,11 +320,10 @@ const styles = StyleSheet.create({
   numberBox: {
     backgroundColor: 'lightgrey',
     flexDirection: 'row',
-    width: 60,
-    height: 60,
-    borderWidth: 2,
-    marginHorizontal: '1%',
-    marginVertical: '3%',
+    width: width * 0.2,
+    height: width * 0.2,
+    borderWidth: 1,
+    borderColor: 'grey',
     alignItems: 'center',
     justifyContent: 'center'
   }
