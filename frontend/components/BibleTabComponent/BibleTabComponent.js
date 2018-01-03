@@ -6,8 +6,7 @@ import {
   FlatList,
   Image,
   Button,
-  Alert,
-  AsyncStorage
+  Alert
 } from 'react-native';
 import axios from 'axios';
 
@@ -181,6 +180,6 @@ const styles = StyleSheet.create({
     height: 30
   },
   mainContainer: {
-    marginTop: '5%'
+    paddingTop: '2%'
   }
 });
