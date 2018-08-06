@@ -6,7 +6,8 @@ import {
   FlatList,
   Image,
   Button,
-  Alert
+  Alert,
+  AsyncStorage
 } from 'react-native';
 import axios from 'axios';
 
